@@ -1,7 +1,6 @@
 package sample.akka.testkit
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
-import akka.testkit
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit}
 import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, MustMatchers, WordSpec, WordSpecLike, BeforeAndAfterEach}
 import com.mildlyskilled._
@@ -57,12 +56,12 @@ class TracerActorTests extends TestKit(ActorSystem("testSystem"))
   "A Coordinator actor" must {
     // Creation of the TestActorRef
 
-    /*"send a set message2" in {
+    "send a set message2" in {
       within(1000 millis) {
         // This call is synchronous. The actor receive() method will be called in the current thread
         coordActorRef ! CoordinatorProtocol.TraceImage
         // With actorRef.underlyingActor, we can access the SimpleActor instance created by Akka
-        expectMsg(TracerProtocol.TracePixels(scene, Trace.Width, Trace.Height, row))
+        expectNoMsg()
       }
     }
     "send a set message3" in {
@@ -70,9 +69,9 @@ class TracerActorTests extends TestKit(ActorSystem("testSystem"))
         // This call is synchronous. The actor receive() method will be called in the current thread
         coordActorRef ! CoordinatorProtocol.RequestMoreWork
         // With actorRef.underlyingActor, we can access the SimpleActor instance created by Akka
-        expectMsg(TracerProtocol.TracePixels(scene, Trace.Width, Trace.Height, 0))
+        expectNoMsg()
       }
-    }*/
+    }
     "send a set message4" in {
       within(1000 millis) {
         // This call is synchronous. The actor receive() method will be called in the current thread
@@ -81,11 +80,6 @@ class TracerActorTests extends TestKit(ActorSystem("testSystem"))
         expectNoMsg()
       }
     }
-   /* "send 800 set messages" in {
-      coordActorRef ! TracerProtocol.TracePixels(scene, Trace.Width, Trace.Height, row)
-      // With actorRef.underlyingActor, we can access the SimpleActor instance created by Akka
-      expectNoMsg
-    }*/
   }
 
   "A Listener actor must" must {

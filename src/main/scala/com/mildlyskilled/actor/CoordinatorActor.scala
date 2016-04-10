@@ -30,6 +30,7 @@ class CoordinatorActor(outputFile: String, image: Image, listener: ActorRef, sce
   log.info("Number of TracerActors: " + nrOfWorkers.toString())
 
   //Creates a router to manage the TracerActors.
+  //akka.actor.deployment
   var router = {
     val routees = Vector.fill(nrOfWorkers) {
       val r = context.actorOf(Props[TracerActor])
